@@ -19,7 +19,7 @@ import org.apache.lucene.search.ScoreDoc;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
 
-public class PrabhatsLuceneDemo {
+public class Demo {
 
 	public static void main(String[] args) {
 		try {
