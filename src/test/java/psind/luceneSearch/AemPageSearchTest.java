@@ -8,7 +8,7 @@ public class AemPageSearchTest {
 	@Test
 	public void PageSearchTest() {
 		String str = "myTest";
-		Assert.assertEquals("myTest1", str);
+		Assert.assertEquals("myTest", str);
 	}
 
 }

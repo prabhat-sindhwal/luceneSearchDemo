@@ -2,6 +2,8 @@ package psind.lucene.demo;
 
 import java.io.File;
 
+import org.apache.lucene.analysis.Analyzer;
+import org.apache.lucene.analysis.core.KeywordAnalyzer;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.index.DirectoryReader;
 import org.apache.lucene.queryparser.classic.QueryParser;
@@ -16,10 +18,12 @@ import psind.lucene.utility.IndexingUtility;
 
 public class AemPageSearchDemo {
 
+	private static Analyzer analyzer = new KeywordAnalyzer();
+
 	public static void main(String[] args) {
 		//IndexingUtility.createAemPagesIndex("/content/we-retail/us/en", Constant.INDEX_DIRECTORY);
 		try {
-			Search("gear");
+			Search("Uintas");
 		} catch (Exception e) {
 			System.out.println("Exception : "+e.getMessage());
 		}
@@ -29,7 +33,7 @@ public class AemPageSearchDemo {
 		Directory iDirectory = FSDirectory.open(new File(Constant.INDEX_DIRECTORY).toPath());
 		DirectoryReader directoryReader = DirectoryReader.open(iDirectory);
 		IndexSearcher iSearcher = new IndexSearcher(directoryReader);
-		Query query = new QueryParser("Content", new StandardAnalyzer()).parse(fullTextSearchText);
+		Query query = new QueryParser("Content", analyzer).parse(fullTextSearchText);
 		ScoreDoc[] hits = iSearcher.search(query, 30).scoreDocs;
 		for (ScoreDoc hit : hits) {
 			System.out.println("Hit : " + iSearcher.doc(hit.doc).get("PagePath"));
