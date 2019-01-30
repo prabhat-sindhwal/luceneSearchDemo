@@ -22,7 +22,7 @@ import org.apache.lucene.store.FSDirectory;
 
 public class IndexingUtility {
 
-	private static Analyzer analyzer = new KeywordAnalyzer();
+	private static Analyzer analyzer = new StandardAnalyzer();
 		
 	//Indexing Files of given directory
 	public static void createFilesIndex() throws Exception {
